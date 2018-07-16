@@ -1,0 +1,42 @@
+package DataStructure.core;
+
+public class StringNode {
+	
+	public String data;
+	public StringNode next;
+	
+	public StringNode()
+	{
+		next = null;
+		data = "0";
+	}
+	
+	public StringNode(String d,StringNode n)
+	{
+		data = d;
+		next = n;
+	}
+
+	public void setLink(StringNode  n)
+	{
+		next  = n;
+	}
+	
+	public void setData(String d)
+	{
+		data = d;
+	}
+	
+	public String getData()
+	{
+		return data;
+	}
+	
+	public StringNode getLink()
+	{
+		return next;
+	}
+}
+class LinkedList{
+	
+}

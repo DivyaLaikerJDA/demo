@@ -1,0 +1,245 @@
+package DataStructure.core;
+
+import java.util.Scanner;
+
+class StringNode {
+	
+	private  String data;
+	private  StringNode next;
+	
+	public StringNode()
+	{
+		next = null;
+		data = "0";
+	}
+	
+	public StringNode(String val,StringNode n)
+	{
+		data = val;
+		next = n;
+	}
+
+	public void setLink(StringNode  n)
+	{
+		next  = n;
+	}
+	
+	public void setData(String d)
+	{
+		data = d;
+	}
+	
+	public String getData()
+	{
+		return data;
+	}
+	
+	public StringNode getLink()
+	{
+		return next;
+	}
+}
+class LinkedList{
+	
+	public StringNode start;
+	public StringNode end;
+	int size;
+	
+	public LinkedList()
+	{
+		start = null;
+		end = null;
+		size = 0;
+	}
+	boolean isEmpty()
+	{
+		if(start==null)
+			return true;
+		else
+			return false;
+	}
+	
+	int getSize()
+	{
+		return size;
+	}
+	
+	public void insertAtStart(String val)
+	{
+		StringNode nptr = new StringNode(val,null);
+		size++;
+	if(start == null)
+	{
+		start = nptr;
+		end = start;
+	}
+	else
+	{
+		nptr.setLink(start);
+		start = nptr;
+	}
+	}
+	
+	public void insertAtEnd(String val)
+	{
+		StringNode nptr = new StringNode(val , null);
+		size++;
+		
+		if(start == null)
+		{
+			start = nptr;
+			end = start;
+		}
+		else
+		{
+			nptr.setLink(end);
+			end = nptr;
+		}
+	}
+	
+	public void insertAtPos(String num , int pos )
+	{
+		StringNode nptr = new StringNode(num, null);
+		StringNode ptr = start;
+		 pos = pos-1;
+		 for(int i=1;i<size;i++)
+		 {
+			 if( i == pos)
+			 {
+				 StringNode temp = ptr.getLink();
+				 ptr.setLink(nptr);
+				 nptr.setLink(temp);
+
+			 break;
+			 }
+			 ptr = ptr.getLink();
+		 }
+		 size++;
+	}
+	
+	public void delete(int pos)
+	{
+		if(pos == 1)
+		{
+			start = start.getLink();
+			size--;
+			return ;
+		}
+		
+		if(pos == size)
+		{
+			StringNode s = start;
+			StringNode t = start;
+			while(s != end)
+			{
+				t = s;
+				s = s.getLink();
+			}
+			
+			end = t;
+			end.setLink(null);
+			size--;
+			return;
+		}
+		StringNode ptr;
+		ptr = start;
+		pos = pos-1;
+		for(int i=1;i<size-1;i++)
+		{
+			if( i == pos)
+			{
+				StringNode temp = ptr.getLink();
+				temp = temp.getLink();
+				ptr.setLink(temp);
+				break;
+			}
+			ptr =ptr.getLink();
+		}
+		size--;
+	}
+	
+	public void display()
+	{
+		if(size == 0)
+		{
+			System.out.println("empty linked List");
+		}
+		if(start.getLink() == null)
+		{
+			System.out.println(start.getData());
+		}
+		StringNode ptr = start;
+		System.out.print(start.getData()+"->");
+		ptr = start.getLink();
+		while(ptr.getLink() != null)
+		{
+			System.out.print(ptr.getData()+"->");
+			ptr = ptr.getLink();
+		}
+		System.out.println(ptr.getData());
+	}
+}
+ public class  CustLinkedLIst
+{ 
+	public static void main(String args[])
+	{
+		Scanner scan = new Scanner(System.in);
+		LinkedList list = new LinkedList();
+		System.out.println("Singly Linked List Test\n");          
+        char ch;
+        /*  Perform list operations  */
+        do
+        {
+            System.out.println("\nSingly Linked List Operations\n");
+            System.out.println("1. insert at begining");
+            System.out.println("2. insert at end");
+            System.out.println("3. insert at position");
+            System.out.println("4. delete at position");
+            System.out.println("5. check empty");
+            System.out.println("6. get size");            
+            int choice = scan.nextInt();            
+            switch (choice)
+            {
+            case 1 : 
+                System.out.println("Enter integer element to insert");
+                list.insertAtStart( scan.nextLine() );                     
+                break;                          
+            case 2 : 
+                System.out.println("Enter integer element to insert");
+                list.insertAtEnd( scan.nextLine() );                     
+                break;                         
+            case 3 : 
+            	 System.out.println("Enter integer element to insert");
+                 String num = scan.nextLine() ;
+                 System.out.println("Enter position");
+                 int pos = scan.nextInt() ;
+                 if (pos <= 1 || pos > list.getSize() )
+                     System.out.println("Invalid position\n");
+                 else
+                     list.insertAtPos(num, pos);
+                 break;                                          
+             case 4 : 
+                 System.out.println("Enter position");
+                 int p = scan.nextInt() ;
+                 if (p < 1 || p > list.getSize() )
+                     System.out.println("Invalid position\n");
+                 else
+                     list.delete(p);
+                 break;
+             case 5 : 
+                 System.out.println("Empty status = "+ list.isEmpty());
+                 break;                   
+             case 6 : 
+                 System.out.println("Size = "+ list.getSize() +" \n");
+                 break;                         
+              default : 
+                 System.out.println("Wrong Entry \n ");
+                 break;   
+             }
+             
+             list.display();
+             System.out.println("\nDo you want to continue (Type y or n) \n");
+             ch = scan.next().charAt(0);                        
+         } while (ch == 'Y'|| ch == 'y');               	
+	}
+	}

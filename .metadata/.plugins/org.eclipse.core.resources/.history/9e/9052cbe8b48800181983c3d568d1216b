@@ -1,0 +1,37 @@
+package com.jda.DataStructure.core;
+import java.io.File;
+import java.util.LinkedList;
+import java.util.ListIterator;
+import java.util.Scanner;
+
+public class UnorderedList {
+
+	public static void main(String args[]) throws Exception
+	{
+
+		File file = new File("/home/bridgelabz/Documents/sampletextfile1.txt");
+		Scanner sc = new Scanner(file);
+		String ch="";
+		LinkedList<String> order = new LinkedList<String>();
+		
+		while(sc.hasNextLine()){
+//		System.out.println(sc.nextLine());
+			String str = sc.nextLine();
+			String[]  str1=str.split(" ");
+			for(int i=0;i<str1.length;i++)
+			{
+				order.add(str1[i]);
+			}
+			System.out.println();
+		}
+		String SearchString ;
+		SearchString = sc.next();
+		for(int i=0;i<order.size();i++)
+		{
+			if(SearchString == order.get(i))
+			{
+				System.out.println(i);
+			}
+		}
+	}
+}

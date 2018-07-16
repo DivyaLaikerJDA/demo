@@ -1,0 +1,14 @@
+package DataStructure.core;
+
+public class StringNode {
+	
+	public String data;
+	public StringNode next;
+	
+	public  NewNode(String data,StringNode next)
+	{
+		this.data = data;
+		this.next = next;
+	}
+
+}
