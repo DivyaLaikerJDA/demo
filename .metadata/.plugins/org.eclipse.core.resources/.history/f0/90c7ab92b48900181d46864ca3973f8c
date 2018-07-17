@@ -1,0 +1,68 @@
+package DataStructure.core;
+
+import java.util.Comparator;
+
+public class OrderedLinkedList<T  extends Comparable<T>>  {
+	
+	Node<T>  head = null;
+public void add(T item)
+{  Node<T> nptr = new Node(item);
+if(head == null)
+{  
+	head = nptr;
+	}
+
+	}
+public boolean search(T item)
+{ 
+	Node<T> ptr = head;
+	if( compare(head.data, item)>0)
+	{
+		return false;
+	}
+	else
+	{
+		for(int i=0;i<size()-1;i++)
+		{
+			if(ptr.data.equals( item))
+				return true;
+		}
+		return false;
+	}
+	}
+public boolean isEmpty()
+{ if(head == null)
+	return true;
+else
+	return false;
+	}
+public int size()
+{  int size = 0;
+	Node<T> ptr = head;
+	if(head == null)
+return 0;
+	else{
+	while(ptr!=null)
+		size++;
+	return size;
+	}
+	
+	}
+private class  Node<T  extends Comparable<T>>{
+	private T data;
+	private Node<T> next;
+	
+	public Node(T a)
+	{
+		this.data =a;
+		next = null;
+	}
+
+}
+public static <T extends Comparable<T>> int compare(T one, T two){
+	return one.compareTo(two);
+}
+
+
+
+}

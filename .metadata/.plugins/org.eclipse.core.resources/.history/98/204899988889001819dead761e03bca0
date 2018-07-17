@@ -1,0 +1,14 @@
+package DataStructure.core;
+
+import java.util.Scanner;
+
+public class CustomTest {
+
+	public static void main(String args[])
+	{
+		customLinkedList list = new customLinkedList();
+	list.add(7);
+	list.print();
+	
+	}
+}

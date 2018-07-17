@@ -1,0 +1,36 @@
+package DataStructure.core;
+
+
+
+public class OrderedLinkedList<T> {
+	
+	Node<T>  head = null;
+public void add(T item)
+{  Node<T> nptr = new Node(item);
+if(head == null)
+{  
+	head = nptr;
+	}
+
+	}
+
+public int size()
+{  int size;
+	Node<T> ptr = head;
+	if(head == null)
+return 0;
+	while(ptr!null)
+		size++;
+	}
+private class  Node<T>{
+	private T data;
+	private Node<T> next;
+	
+	public Node(T a)
+	{
+		data =a;
+		next = null;
+	}
+
+}
+}

@@ -11,8 +11,9 @@ public class UnorderedList {
 
 		File file = new File("/home/bridgelabz/Documents/sampletextfile1.txt");
 		Scanner sc = new Scanner(file);
+		Scanner scan = new Scanner(System.in);
 		String ch="";
-		LinkedList<String> order = new LinkedList<String>();
+        customLinkedList list = new customLinkedList();
 		
 		while(sc.hasNextLine()){
 //		System.out.println(sc.nextLine());
@@ -20,18 +21,23 @@ public class UnorderedList {
 			String[]  str1=str.split(" ");
 			for(int i=0;i<str1.length;i++)
 			{
-				order.add(str1[i]);
+				list.append(str1[i]);
 			}
-			System.out.println();
+			System.out.println( );
 		}
 		String SearchString ;
-		SearchString = sc.next();
-		for(int i=0;i<order.size();i++)
+		System.out.println("enter string to be searched");
+		SearchString = scan.next();
+		
+		if(list.search(SearchString))
 		{
-			if(SearchString == order.get(i))
-			{
-				System.out.println(i);
-			}
+			list.remove(SearchString);
 		}
+		else
+		{
+			list.append(SearchString);
+		}
+		System.out.println("list ");
+		list.print();
 	}
 }

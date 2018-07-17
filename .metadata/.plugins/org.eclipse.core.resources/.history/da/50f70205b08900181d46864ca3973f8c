@@ -1,0 +1,14 @@
+package DataStructure.core;
+
+import java.util.Comparator;
+
+public class NaturalComparator<T extends Comparable<T>> implements Comparator<T>{
+
+	@Override
+	public int compare(T one, T two) {
+		// TODO Auto-generated method stub
+		return one.compareTo(two);
+	
+	}
+
+}

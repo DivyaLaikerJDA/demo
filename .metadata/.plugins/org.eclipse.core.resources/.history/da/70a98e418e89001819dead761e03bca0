@@ -1,0 +1,137 @@
+package DataStructure.core;
+
+public class customLinkedList {
+	Node head = null;
+	
+	public void append(int item)
+	{
+		Node nptr = new Node(item);
+		if(head == null)
+		{
+		head = nptr;
+		}
+		else
+		{
+			Node ptr = head;
+			while(ptr.next !=null)
+				ptr = ptr.next;
+			ptr.next = nptr;
+		}
+	}
+	public int index(int item)
+	{ int ind = -1 ;
+	int count =-1;
+		if(head.data == item)
+			return 0;
+		else
+		{
+			Node ptr = head;
+			while(ptr != null)
+			{
+				if(ptr.data == item){
+					int=count;
+					return count;
+				}
+				ptr = ptr.next;
+				count++;
+			}
+			return int;
+		}
+	}
+	public void add(int item)
+	{
+		Node nptr = new Node(item);
+		if(head == null)
+		{
+			head = nptr;
+		}
+		else{
+			nptr.next = head;
+			head = nptr;
+		}
+	}
+	public int size()
+	{ 
+		int size =0;
+		if(head == null)
+			return 0;
+		else
+		{
+			Node ptr = head;
+			while(ptr != null)
+			{
+				size++;
+				ptr = ptr.next;
+			}
+			return size;
+		}
+	}
+	
+	public boolean isEmpty()
+	{
+		if(head==null)
+			return true;
+		else
+			return false;
+	}
+	public void print()
+	{
+		
+		if(head == null){
+			System.out.println("empty linkedlist");
+			return;
+		}
+		else{
+			Node ptr = head;
+		while(ptr!=null){
+			System.out.print(ptr.data+" ");
+			ptr = ptr.next;
+		}
+		}
+	}
+	public boolean search(int item)
+	{
+		
+		if(head.data == item)
+			return true;
+		else
+		{
+			Node ptr = head;
+			while(ptr != null)
+			{
+				if(ptr.data == item)
+					return true;
+				
+				ptr = ptr.next;
+			}
+			return false;
+		}
+	}
+	public void remove(int item)
+	{   if(head.data == item)
+	{
+		head = head.next;
+		return;
+	}
+		Node ptr =head;
+		Node prev = null;
+		while(ptr.data != item && ptr != null)
+		{ prev = ptr;
+			ptr = ptr.next;
+		}
+		prev.next = ptr.next;
+		
+	}
+	private class  Node{
+		private int data;
+		private Node next;
+		
+		public Node(int a)
+		{
+			data =a;
+			next = null;
+		}
+	
+	}
+
+}
