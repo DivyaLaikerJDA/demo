@@ -37,7 +37,8 @@ public class customLinkedList<T> {
 			 return ind;
 		}
 	}
-	public void insert(int pos ,T  item)
+		public void insert(int pos ,T  item)
+	
 	{  Node<T> nptr = new Node<T>(item);
 		Node<T> ptr = head;
 		pos = pos -1;
@@ -159,6 +160,7 @@ public class customLinkedList<T> {
 			ptr = ptr.next;
 		}
 		prev.next = ptr.next;
+		
 		
 	}
 
