@@ -9,11 +9,11 @@ public class UnorderedList {
 	public static void main(String args[]) throws Exception
 	{
 
-		File file = new File("/home/bridgelabz/Documents/sampletextfile1.txt");
+		File file = new File("C:\\Users\\1022779\\Desktop\\sampletext1.txt");
 		Scanner sc = new Scanner(file);
 		Scanner scan = new Scanner(System.in);
-		String ch="";
-        customLinkedList list = new customLinkedList();
+	
+        customLinkedList<String> list = new customLinkedList<>();
 		
 		while(sc.hasNextLine()){
 //		System.out.println(sc.nextLine());
@@ -39,5 +39,8 @@ public class UnorderedList {
 		}
 		System.out.println("list ");
 		list.print();
+		sc.close();
+		scan.close();
 	}
+	
 }

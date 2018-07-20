@@ -7,7 +7,7 @@ public class CustomTest {
 	public static void main(String args[])
 	{
 		customLinkedList list = new customLinkedList();
-	
+	System.out.println(list.isEmpty());
 	list.append(7);
 	list.append(5);
 	list.append(4);
@@ -15,6 +15,7 @@ public class CustomTest {
 	list.add(9);
 //	list.remove(7);
 	list.insert(3, 12);
+	System.out.println(list.isEmpty());
 	//System.out.println(list.search(10));
 	//System.out.println(list.size());
 	//System.out.println(list.index(12));

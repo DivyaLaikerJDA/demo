@@ -8,11 +8,11 @@ public class customLinkedList<T> {
 		Node<T> nptr = new Node<T>(item);
 		if(head == null)
 		{
-		head = nptr;
+			head = nptr;
 		}
 		else
 		{
-			Node ptr = head;
+			Node<T> ptr = head;
 			while(ptr.next !=null)
 				ptr = ptr.next;
 			ptr.next = nptr;
@@ -56,6 +56,14 @@ public class customLinkedList<T> {
 		Node<T> prev=null,poped;
 		Node<T> ptr = head;
 		int k=0;
+		if(pos == 0) {
+			poped = head;
+			if(size()>1)
+			head = head.next;
+			else
+				head = null;
+			return poped.data;
+		}
 		while(ptr.next != null && k<pos)
 		{ prev = ptr;
 		ptr = ptr.next;
@@ -70,6 +78,7 @@ public class customLinkedList<T> {
 	{
 		Node<T> ptr = head;
 		Node<T> poped = null;
+		if(size()>1) {
 		while(ptr.next.next != null)
 		{
 			ptr = ptr.next;
@@ -77,6 +86,14 @@ public class customLinkedList<T> {
 		poped = ptr.next;
 		ptr.next = null;
 		return poped.data;
+		}
+		if(size()==1) {
+			poped = head;
+				head = null;
+				return poped.data;
+				
+		}
+		return null;
 		
 	}
 	public void add(T item)
@@ -110,10 +127,7 @@ public class customLinkedList<T> {
 	
 	public boolean isEmpty()
 	{
-		if(head==null)
-			return true;
-		else
-			return false;
+		return head==null;
 	}
 	public void print()
 	{
@@ -164,9 +178,9 @@ public class customLinkedList<T> {
 		
 	}
 
-	private class  Node<T>{
-		private T data;
-		private Node<T> next;
+	public class  Node<T>{
+		protected T data;
+		protected Node<T> next;
 		
 		public Node(T a)
 		{

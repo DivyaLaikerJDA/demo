@@ -45,14 +45,15 @@ public class OrderedLinkedList<T  extends Comparable<T>>  {
 	}
 
 public void add(T item)
-{  Node<T> nptr = new Node(item);
-Node<T> ptr = head,prev = null;
+{  
+	Node<T> nptr = new Node(item);
+	Node<T> ptr = head,prev = null;
 if(head == null)
 {  
 	head = nptr;
 	return;
 	}
-if(head.next ==null ||compare(head.data,nptr.data)>0 ){
+if(head.next == null && (compare(head.data,nptr.data)>0 || compare(head.data,nptr.data)<0) ){
 	
 if(compare(head.data,nptr.data)>0)
 {
@@ -63,19 +64,21 @@ if(compare(head.data,nptr.data)>0)
 else
 {
 	head.next = nptr;
+	head = nptr;
 	return;
 	}
+  
 }
 else
 {
 
-	while(compare(nptr.data,ptr.data)>0 )
+	while(compare(nptr.data,ptr.data)>0 && ptr.next !=null)
 	{
 		prev = ptr;
 		ptr = ptr.next;
 	}
-	prev.next = nptr;
-	nptr.next = ptr;
+	nptr.next = ptr.next;
+	ptr.next = nptr;
 		}
 }
 	
@@ -159,9 +162,9 @@ public int size()
 		return size;
 	}
 }
-private class  Node<T >{
-	private T data;
-	private Node<T> next;
+class  Node<T >{
+	T data;
+	 Node<T> next;
 	
 	public Node(T a)
 	{
