@@ -1,94 +1,59 @@
 package ObjectOriented.core;
 
 public class Person {
+	private String name;
+	private String address;
+	private String city;
+	private String state;
+	private int zip;
+	private long phoneNumber;
 
-	 private String FirstName = "";
-	 private String LastName;
-	 private String Address;
-	 private String City;
-	 private String State;
-	 private String PhoneNumber;
-	 private String Zip;
-	 
-	 
-	 public Person(String f,String l,String a,String c,String s,String p,String z)
-	 {
-		 FirstName = f;
-		 LastName = l;
-		 Address = a;
-		 City = c;
-		 State = s;
-		 PhoneNumber = p;
-		 Zip = z;
-		 
-	 }
-	 
-	 
-	 
-	public String getFirstName() {
-		return FirstName;
+	public String getName() {
+		return name;
 	}
 
-	public void setFirstName(String firstName) {
-		FirstName = firstName;
-	}
-
-	public String getLastName() {
-		return LastName;
-	}
-
-	public void setLastName(String lastName) {
-		LastName = lastName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
 
 	public String getCity() {
-		return City;
+		return city;
 	}
 
 	public void setCity(String city) {
-		City = city;
+		this.city = city;
 	}
 
 	public String getState() {
-		return State;
+		return state;
 	}
 
 	public void setState(String state) {
-		State = state;
+		this.state = state;
 	}
 
-	public String getPhoneNumber() {
-		return PhoneNumber;
+	public int getZip() {
+		return zip;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
-		PhoneNumber = phoneNumber;
+	public void setZip(int zip) {
+		this.zip = zip;
 	}
 
-	public String getZip() {
-		return Zip;
+	public long getPhoneNumber() {
+		return phoneNumber;
 	}
 
-	public void setZip(String zip) {
-		Zip = zip;
+	public void setPhoneNumber(long phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
-	 
-	public void print()
-	{
-		System.out.println(FirstName);
-		System.out.println(LastName);
-		System.out.println(Address);
-		System.out.println(City);
-		System.out.println(State);
-		System.out.println(PhoneNumber);
-		System.out.println(Zip);
-	}
+
 }

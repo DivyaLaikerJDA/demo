@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,17 +23,31 @@ import DataStructure.core.customLinkedList;
 import ObjectOriented.core.ObjectsUtil;
 
 public class util {
-	static Scanner scan = new Scanner(System.in);
+	private static Scanner scan = new Scanner(System.in);
 	public List<ObjectsUtil> cs = new ArrayList<ObjectsUtil>();
-	public int getIntcust()
+	public static int getIntcust()
 	{
 		return scan.nextInt();
 	}
-	public String getStringcust()
+	public static String getStringcust()
 	{
 		return scan.next();
 	}
 	
+	  public static List<String> allFilesInFolder(String path) {
+	        File folder = new File(path);
+	        File[] allFiles = folder.listFiles(new FilenameFilter() {
+	            @Override
+	            public boolean accept(File dir, String name) {
+	                return name.toLowerCase().endsWith(".json");
+	            }
+	        });
+	        List<String> Files = new ArrayList<>();
+	        for (int i = 0; i < allFiles.length; i++) {
+	            Files.add(allFiles[i].getName());
+	        }
+	        return Files;
+	    }
 	public void writeToFile(File fileName) throws JsonGenerationException , JsonMappingException , IOException
 	{
 		ObjectMapper mapper = new ObjectMapper();
@@ -46,30 +61,7 @@ public class util {
 		try{
 			
 		ObjectMapper mapper = new ObjectMapper();
-
-		FileReader reader = new FileReader(new File("/home/bridgelabz/workspace/demo1/src/ObjectOriented/core/OOPs.json"));
-		BufferedReader bf = new BufferedReader(reader);
-		String outputString = "";
-		String jsonString = "";
-		ObjectsUtil ou = new ObjectsUtil();
-		while((outputString = bf.readLine()) != null){
-			//String outputString = bf.readLine();
-			jsonString = jsonString + outputString;
-		}
-		
-		
-		System.out.println(jsonString);
 		cs = mapper.readValue(new File("/home/bridgelabz/workspace/demo1/src/ObjectOriented/core/OOPs.json"), new TypeReference<ArrayList<ObjectsUtil>>() {});
-	System.out.println("Name:" +cs.get(0).getName());
-		//ou = mapper.readValue(jsonString, ObjectsUtil.class);
-	/*	JsonNode node =  mapper.readTree(fileName);
-		
-		for(JsonNode obj:node)
-		{
-			System.out.println(obj);
-			ObjectsUtil ob = mapper.treeToValue(obj, ObjectsUtil.class);
-			cs.add(ob);
-		}*/
 		}
 		catch(Exception e)
 		{
@@ -78,4 +70,12 @@ public class util {
 		}
 	}
 
+	public static double getRandomDoubleBetweenRange(double min, double max){
+	    double x = (Math.random()*((max-min)+1))+min;
+	    return x;
+	}
+	public static long getLong() {
+		// TODO Auto-generated method stub
+		return scan.nextLong();
+	}
 }
