@@ -17,7 +17,7 @@ public class StockPortfolio {
 		String data;
 		try {
 			data = new String(Files.readAllBytes(Paths.get(
-					"/home/bridgelabz/java-programs/Functional-Programs/ObjectOriented/src/com/jda/core/StockReport/stocks.json")));
+					"/home/bridgelabz/workspace/demo1/src/ObjectOriented/core/StockReports/Stocks.json")));
 		} catch (Exception e) {
 			System.out.println("File does not exist!");
 			return null;
@@ -36,7 +36,6 @@ public class StockPortfolio {
 		}
 	}
 
-//	public static void main(String[] args) throws JsonParseException, JsonMappingException, IOException {
-//		calculateValues();
-//	}
+
+
 }

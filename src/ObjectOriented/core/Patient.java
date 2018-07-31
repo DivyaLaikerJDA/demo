@@ -3,32 +3,32 @@ package ObjectOriented.core;
 public class Patient {
 
 	String Name;
-	String ID;
-	String MobileNumber; 
-	String Age;
+	int ID;
+	long MobileNumber; 
+	int Age;
 	public String getName() {
 		return Name;
 	}
 	public void setName(String name) {
 		Name = name;
 	}
-	public String getID() {
+	public int getID() {
 		return ID;
 	}
-	public void setID(String iD) {
-		ID = iD;
+	public void setID(int i) {
+		ID = i;
 	}
-	public String getMobileNumber() {
+	public long getMobileNumber() {
 		return MobileNumber;
 	}
-	public void setMobileNumber(String mobileNumber) {
-		MobileNumber = mobileNumber;
+	public void setMobileNumber(long l) {
+		MobileNumber = l;
 	}
-	public String getAge() {
+	public int getAge() {
 		return Age;
 	}
-	public void setAge(String age) {
-		Age = age;
+	public void setAge(int i) {
+		Age = i;
 	}
 	
 }

@@ -26,7 +26,7 @@ import org.codehaus.jackson.type.TypeReference;
 
 public class StockAccount {
 
-	private String path = "/home/bridgelabz/java-programs/Functional-Programs/ObjectOriented/src/com/jda/core/StockReport";
+	private String path = "/home/bridgelabz/workspace/demo1/src/ObjectOriented/core/StockReport";
 	private List<CompanyShares> sharesOfPerson = new ArrayList<>();
 	private List<Stock> sharesAvailable = sharesAvailable();
 	private Date date = new Date();
@@ -141,8 +141,7 @@ public class StockAccount {
 
 	public void printReport() {
 
-		System.out.print(
-				"--------------------------------------------------------------------------------------------------------------");
+
 		System.out.print("\nAccount Details:\n");
 		int i = 1;
 		for (CompanyShares x : sharesOfPerson) {
@@ -151,8 +150,7 @@ public class StockAccount {
 			i++;
 		}
 
-		System.out.print(
-				"--------------------------------------------------------------------------------------------------------------");
+		
 		System.out.print("\nShares Available :\n\n");
 		for (i=0; i<sharesAvailable.size(); i++)
 		{
@@ -162,8 +160,6 @@ public class StockAccount {
 				System.out.print(" , ");
 			}
 		}
-		System.out.print("\n\n");
-		System.out.print(
-				"--------------------------------------------------------------------------------------------------------------");
+System.out.println("\n\n");
 	}
 }

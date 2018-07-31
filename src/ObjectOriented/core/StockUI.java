@@ -20,7 +20,7 @@ public class StockUI {
 			System.out.print("7. Exit\n");
 			System.out.print("Enter choice : ");
 			choice = util.getIntcust();
-			util.getStringcust();
+		//	util.getStringcust();
 			switch (choice) {
 			case 1: {
 				System.out.print("\nEnter the account name:");
@@ -48,7 +48,7 @@ public class StockUI {
 				String name = util.getStringcust();
 				System.out.print("\nEnter the amount:");
 				int number = util.getIntcust();
-				util.getStringcust();
+			//	util.getStringcust();
 				account.sell (number, name);
 				break;
 			}

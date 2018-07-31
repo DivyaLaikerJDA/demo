@@ -1,7 +1,5 @@
 package ObjectOriented.core;
 
-import java.util.Scanner;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -19,7 +17,7 @@ import ObjectOriented.utility.util;
 
 public class AddressBookManager {
 
-	private static String path = "/home/bridgelabz/java-programs/Functional-Programs/AddressBook/Json-Files";
+	private static String path = "/home/bridgelabz/workspace/demo1/src/ObjectOriented/core/Json-Files";
 	private static List<String> allAddressBooks = util.allFilesInFolder(path);
 	private static List<AddressBook> allOpenAddressBooks = new ArrayList<>();
 
@@ -27,7 +25,7 @@ public class AddressBookManager {
 		System.out.println("Enter the name of the address book:");
 		String name = util.getStringcust();
 		while (allAddressBooks.contains(name + ".json")) {
-			System.out.print("Filename already exists! Enter name again :");
+			System.out.print("Filename already exists. Enter name again :");
 			name = util.getStringcust();
 			
 		}
@@ -59,7 +57,7 @@ public class AddressBookManager {
 			System.out.println("6. Go back to main menu");
 			System.out.print("Enter choice :");
 			int ans = util.getIntcust();
-			util.getStringcust();
+
 			if (ans != 6) {
 				switch (ans) {
 				case 1: {
@@ -178,7 +176,7 @@ public class AddressBookManager {
 			System.out.println("6. Quit");
 			System.out.print("Enter choice :");
 			int ans = util.getIntcust();
-			util.getStringcust();
+			//util.getStringcust();
 			if (ans != 6) {
 				switch (ans) {
 				case 1: {

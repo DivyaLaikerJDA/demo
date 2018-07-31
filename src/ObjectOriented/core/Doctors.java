@@ -3,18 +3,18 @@ package ObjectOriented.core;
 public class Doctors {
 
 	String Name;
-	String Id;
+	int  Id;
 	public String getName() {
 		return Name;
 	}
 	public void setName(String name) {
 		Name = name;
 	}
-	public String getId() {
+	public int getId() {
 		return Id;
 	}
-	public void setId(String id) {
-		Id = id;
+	public void setId(int Id) {
+		Id = Id;
 	}
 	public String getSpecialization() {
 		return Specialization;
