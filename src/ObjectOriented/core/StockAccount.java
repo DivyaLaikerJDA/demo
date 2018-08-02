@@ -26,7 +26,7 @@ import org.codehaus.jackson.type.TypeReference;
 
 public class StockAccount {
 
-	private String path = "/home/bridgelabz/workspace/demo1/src/ObjectOriented/core/StockReport";
+	private static String path = "/home/bridgelabz/workspace/demo1/src/ObjectOriented/core/StockReport";
 	private List<CompanyShares> sharesOfPerson = new ArrayList<>();
 	private List<Stock> sharesAvailable = sharesAvailable();
 	private Date date = new Date();

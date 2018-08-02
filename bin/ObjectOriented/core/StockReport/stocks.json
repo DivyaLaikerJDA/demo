@@ -1,0 +1,13 @@
+[ {
+  "name" : "dell",
+  "price" : 400.0,
+  "quantity" : 400
+}, {
+  "name" : "jda",
+  "price" : 210.0,
+  "quantity" : 111
+}, {
+  "name" : "SAP",
+  "price" : 160.0,
+  "quantity" : 132
+} ]

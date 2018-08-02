@@ -13,6 +13,11 @@ import org.codehaus.jackson.type.TypeReference;
 
 public class StockPortfolio {
 
+	
+public static void main(String[] args) throws JsonParseException, JsonMappingException, IOException {
+	calculateValues();
+}
+
 	public static List<Stock> readFromFile() throws JsonParseException, JsonMappingException, IOException {
 		String data;
 		try {
@@ -35,9 +40,7 @@ public class StockPortfolio {
 			System.out.print("Name : " + x.getName() + " \t| " + "Value : " + x.getPrice()*x.getQuantity() + "\n");
 		}
 	}
-public static void main(String[] args) throws JsonParseException, JsonMappingException, IOException {
-	calculateValues();
-}
+
 
 
 }

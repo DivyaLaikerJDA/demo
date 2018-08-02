@@ -2,8 +2,8 @@ package ObjectOriented.core;
 
 public class Doctors {
 
-	String Name;
-	int  Id;
+	private String Name;
+	private int  Id;
 	public String getName() {
 		return Name;
 	}

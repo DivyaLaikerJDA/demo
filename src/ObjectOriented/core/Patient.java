@@ -2,10 +2,10 @@ package ObjectOriented.core;
 
 public class Patient {
 
-	String Name;
-	int ID;
-	long MobileNumber; 
-	int Age;
+	private String Name;
+	private int ID;
+	private long MobileNumber; 
+	private int Age;
 	public String getName() {
 		return Name;
 	}

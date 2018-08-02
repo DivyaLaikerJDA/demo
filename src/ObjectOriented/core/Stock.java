@@ -1,9 +1,9 @@
 package ObjectOriented.core;
 
 public class Stock {
-	String name;
-	float price;
-	int quantity;
+	private String name;
+	private float price;
+	private int quantity;
 
 	public String getName() {
 		return name;

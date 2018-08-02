@@ -20,75 +20,49 @@ import ObjectOriented.utility.util;
 
 
 public class CliniqueUI {
-	private static List<Doctors> allDoctors;
-	private static List<Patient> allPatients;
+	private static List<Doctors> allDoc;
+	private static List<Patient> allPat;
 	private static Map<Doctors, ArrayList<Patient>> appointments = new HashMap<>();
 
-	static public List<Doctors> readDoctorData() throws JsonParseException, JsonMappingException, IOException {
-		ObjectMapper mapper = new ObjectMapper();
-		allDoctors = mapper.readValue(
-				new File("/home/bridgelabz/workspace/demo1/src/ObjectOriented/core/Doctors.json"),
-				new TypeReference<ArrayList<Doctors>>() {
-				});
-		return allDoctors;
-	}
-
-	static public List<Patient> readPatientData() throws JsonParseException, JsonMappingException, IOException {
-		ObjectMapper mapper = new ObjectMapper();
-		try {
-			allPatients = mapper.readValue(
-					new File("/home/bridgelabz/workspace/demo1/src/ObjectOriented/core/Patients.json"),
-					new TypeReference<ArrayList<Patient>>() {
-					});
-		} catch (Exception e) {
-			allPatients = new ArrayList<Patient>();
-		}
-		return allPatients;
-	}
+	// method to search doctor based on id
 
 	static public Doctors searchDoctor(int id) {
 		util.getStringcust();
-		for (Doctors doctor : allDoctors) {
-			if (doctor.Id == id) {
+		for (Doctors doctor : allDoc) {
+			if (doctor.getId() == id) {
 				return doctor;
 			}
 		}
 		return null;
 	}
-
+//
 	static public Doctors searchDoctor(int type, String data) {
 		switch (type) {
-		case 1: {
-			for (Doctors doctor : allDoctors) {
-				if (doctor.Name.equals(data)) {
+		case 1: 
+			for (Doctors doctor : allDoc) 
+				if (doctor.getName().equals(data)) 
 					return doctor;
-				}
-			}
-			break;
-		}
-		case 2: {
-			for (Doctors doctor : allDoctors) {
-				if (doctor.Specialization.equals(data)) {
+				break;
+		
+		case 2: 
+			for (Doctors doctor : allDoc) 
+				if (doctor.Specialization.equals(data)) 
 					return doctor;
-				}
-			}
-			break;
-		}
+				break;
+		
 		case 3: {
-			for (Doctors doctor : allDoctors) {
-				if (doctor.Availability.equals(data)) {
+			for (Doctors doctor : allDoc) 
+				if (doctor.Availability.equals(data)) 
 					return doctor;
-				}
-			}
-			break;
+				break;
 		}
 		}
 		return null;
 	}
-
+// search method based based on name for patients
 	static public Patient searchPatient(String data) {
-		for (Patient patient : allPatients) {
-			if (patient.Name.equals(data)) {
+		for (Patient patient : allPat) {
+			if (patient.getName().equals(data)) {
 				return patient;
 			}
 		}
@@ -97,53 +71,49 @@ public class CliniqueUI {
 
 	static public Patient searchPatient(int type, int data) {
 		switch (type) {
-		case 2: {
-			for (Patient patient : allPatients) {
-				if (patient.ID == data) {
+		case 2: 
+			for (Patient patient : allPat) 
+				if (patient.getID() == data) 
 					return patient;
-				}
-			}
-			break;
-		}
-		case 3: {
-			for (Patient patient : allPatients) {
-				if (patient.MobileNumber == data) {
+				break;
+		
+		case 3: 
+			for (Patient patient : allPat) 
+				if (patient.getMobileNumber() == data) 
 					return patient;
-				}
-			}
-			break;
-		}
+				break;
 		}
 		return null;
 	}
-
+// printing function for doctor
 	static public void printDoctorDetails(Doctors doctor) {
 		System.out.print("\nName: " + doctor.getName());
 		System.out.print("\nID: " + doctor.getId());
 		System.out.print("\nSpecialization: " + doctor.getSpecialization());
 		System.out.print("\nAvailability: " + doctor.getAvailability());
 	}
-
+// print method for patients
 	static public void printPatientDetails(Patient patient) {
 		System.out.print("\nName: " + patient.getName());
 		System.out.print("\nID: " + patient.getID());
 		System.out.print("\nSpecialization: " + patient.getMobileNumber());
 		System.out.print("\nAvailability: " + patient.getAge());
 	}
-
+// setter method for doctors
 	static public Doctors setDoctorDetails() {
 		Doctors doctor = new Doctors();
 		System.out.print("\nEnter the name:");
 		doctor.setName(util.getStringcust());
+		util.getStringcust();
 		System.out.print("\nEnter the specialization:");
-		doctor.setSpecialization((util.getStringcust()));
+		doctor.setSpecialization(util.getStringcust());
 		System.out.print("\nEnter the ID:");
 		doctor.setId(util.getIntcust());
 	System.out.print("\nEnter the availability:");
 		doctor.setAvailability(util.getStringcust());
 		return doctor;
 	}
-
+//setter method for patients
 	static public Patient setPatientDetails() {
 		Patient patient = new Patient();
 		System.out.print("\nPatient Details");
@@ -157,40 +127,41 @@ public class CliniqueUI {
 		patient.setAge(util.getIntcust());
 		return patient;
 	}
-
+// add new doctor to the list
 	static public void addDoctor() throws JsonGenerationException, JsonMappingException, IOException {
-		allDoctors.add(setDoctorDetails());
+		allDoc.add(setDoctorDetails());
 		ObjectMapper mapper = new ObjectMapper();
-		String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(allDoctors);
-		String path = "/home/bridgelabz/workspace/demo1/src/ObjectOriented/core/Doctors.json";
+		String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(allDoc);
+		System.out.println(json);
+		String path = "/home/bridgelabz/workspace/demo1/src/ObjectOriented/core/doctor.json";
 		FileWriter file = new FileWriter(path);
 		file.write(json);
 		file.close();
 	}
-
+// add the new patient to the list 
 	static public void addPatient() throws JsonGenerationException, JsonMappingException, IOException {
-		allPatients.add(setPatientDetails());
+		allPat.add(setPatientDetails());
 		ObjectMapper mapper = new ObjectMapper();
-		String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(allPatients);
+		String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(allPat);
 		String path = "/home/bridgelabz/workspace/demo1/src/ObjectOriented/core/Patients.json";
 		FileWriter file = new FileWriter(path);
 		file.write(json);
 		file.close();
 	}
-
+// details
 	static public void askAppointmentDetails() {
 		System.out.print("\nEnter the specialization:");
 		String specialization = util.getStringcust();
 		System.out.print("\nEnter the time (am/pm/any) :");
 		String time = util.getStringcust();
 		ArrayList<Doctors> doctor = new ArrayList<>();
-		for (Doctors x : allDoctors) {
+		for (Doctors x : allDoc) {
 			if (x.getSpecialization().equals(specialization) && x.getAvailability().equals(time)) {
 				doctor.add(x);
 			}
 		}
 		if (doctor.size() == 0) {
-			System.out.print("\nNo doctor found with this specialization!");
+			System.out.print("\nNo doc found with this spec");
 			return;
 		}
 
@@ -377,10 +348,45 @@ public class CliniqueUI {
 				break;
 			}
 			case 4: {
-				bookAppointment();
+				Appointment();
 				break;
 			}
 			}
 		}
+	}
+	static public List<Doctors> readDoctorData() throws JsonParseException, JsonMappingException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		allDoc = mapper.readValue(
+				new File("/home/bridgelabz/workspace/demo1/src/ObjectOriented/core/Doctors.json"),
+				new TypeReference<ArrayList<Doctors>>() {
+				});
+		return allDoc;
+	}
+
+	static public List<Patient> readPatientData() throws JsonParseException, JsonMappingException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			allPat = mapper.readValue(
+					new File("/home/bridgelabz/workspace/demo1/src/ObjectOriented/core/Patients.json"),
+					new TypeReference<ArrayList<Patient>>() {
+					});
+		} catch (Exception e) {
+			allPat = new ArrayList<Patient>();
+		}
+		return allPat;
+	}
+	public static void Appointment() throws JsonParseException, JsonMappingException, IOException
+	{
+		allDoc = readDoctorData();
+		for(Doctors doc:allDoc)
+		{
+			System.out.println(doc.getName());
+		}
+		System.out.println("enter with whom you want an appointment");
+	String name= 	util.getStringcust();
+	 AppointmentClass ac = new AppointmentClass(name);
+	 
+	Patient newPatient = new Patient();
+	
 	}
 }

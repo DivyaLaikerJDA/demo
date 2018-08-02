@@ -1,9 +1,9 @@
 package ObjectOriented.core;
 
 public class CompanyShares {
-	String symbol;
-	int numberOfShares;
-	String date;
+	private String symbol;
+	private int numberOfShares;
+	private String date;
 
 	public String getSymbol() {
 		return symbol;
