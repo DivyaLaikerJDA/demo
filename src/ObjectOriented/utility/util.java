@@ -33,6 +33,10 @@ public class util {
 	{
 		return scan.next();
 	}
+	public static String getStr()
+	{
+		return scan.next();
+	}
 	
 	  public static List<String> allFilesInFolder(String path) {
 	        File folder = new File(path);

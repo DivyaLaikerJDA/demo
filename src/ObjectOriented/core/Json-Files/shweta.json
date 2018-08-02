@@ -1,0 +1,8 @@
+[ {
+  "name" : "xyz",
+  "address" : "101",
+  "city" : "navi",
+  "state" : "mumbai",
+  "zip" : 123456,
+  "phoneNumber" : 1234567890
+} ]

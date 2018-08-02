@@ -1,5 +1,7 @@
 package ObjectOriented.core;
 
+import ObjectOriented.utility.util;
+
 public class Person {
 	private String name;
 	private String address;
@@ -8,11 +10,13 @@ public class Person {
 	private int zip;
 	private long phoneNumber;
 
+	
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
+		
 		this.name = name;
 	}
 

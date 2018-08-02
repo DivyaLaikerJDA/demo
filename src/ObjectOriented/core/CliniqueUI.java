@@ -139,8 +139,7 @@ public class CliniqueUI {
 		doctor.setSpecialization((util.getStringcust()));
 		System.out.print("\nEnter the ID:");
 		doctor.setId(util.getIntcust());
-	
-		System.out.print("\nEnter the availability:");
+	System.out.print("\nEnter the availability:");
 		doctor.setAvailability(util.getStringcust());
 		return doctor;
 	}

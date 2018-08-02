@@ -1,0 +1,22 @@
+[ {
+  "name" : "shweta bodke",
+  "address" : "101",
+  "city" : "mumbai",
+  "state" : "maha",
+  "zip" : 909787,
+  "phoneNumber" : 1234567890
+}, {
+  "name" : "shweta bodke",
+  "address" : "101",
+  "city" : "mumbai",
+  "state" : "maha",
+  "zip" : 928281,
+  "phoneNumber" : 1234567890
+}, {
+  "name" : "divya laiker",
+  "address" : "201",
+  "city" : "banglore",
+  "state" : "karnatak",
+  "zip" : 1556352,
+  "phoneNumber" : 987654321
+} ]

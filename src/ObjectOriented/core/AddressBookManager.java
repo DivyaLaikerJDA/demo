@@ -19,8 +19,10 @@ public class AddressBookManager {
 
 	private static String path = "/home/bridgelabz/workspace/demo1/src/ObjectOriented/core/Json-Files";
 	private static List<String> allAddressBooks = util.allFilesInFolder(path);
-	private static List<AddressBook> allOpenAddressBooks = new ArrayList<>();
-
+	//private static List<AddressBook> allOpenAddressBooks = new ArrayList<>();
+ //private static List<Person> person = new ArrayList();
+	private static AddressBook ab ;
+	private static String name;
 	public static void createAddressBook() throws IOException {
 		System.out.println("Enter the name of the address book:");
 		String name = util.getStringcust();
@@ -40,14 +42,14 @@ public class AddressBookManager {
 		ObjectMapper mapper = new ObjectMapper();
 		List<Person> person = new ArrayList<>();
 		System.out.println("Enter the name of the address book:");
-		String name = util.getStringcust();
+	 name = util.getStringcust();
 		try {
 			person = mapper.readValue(new File(path + "/" + name + ".json"), new TypeReference<ArrayList<Person>>() {
 			});
 		} catch (IOException e) {
 			person = new ArrayList<Person>();
 		}
-		AddressBook addressBook = new AddressBook(name);
+		 ab = new AddressBook(name);
 		while (true) {
 			System.out.println("1. Create new entry");
 			System.out.println("2. Edit information");
@@ -61,23 +63,24 @@ public class AddressBookManager {
 			if (ans != 6) {
 				switch (ans) {
 				case 1: {
-					person = addressBook.addEntry(person);
+					person = ab.addEntry(person);
 				}
 					break;
 				case 2: {
-					person = addressBook.editInfo(person);
+					person = ab.editInfo(person);
 				}
 					break;
 				case 3: {
-					person = addressBook.deleteEntry(person);
-				}
+					person = ab.deleteEntry(person);
 					break;
+				}
+				
 				case 4: {
-					person = addressBook.sortByLastName(person);
+					person = ab.sortByLastName(person);
 				}
 					break;
 				case 5: {
-					person = addressBook.sortByZip(person);
+					person = ab.sortByZip(person);
 				}
 					break;
 				}
@@ -85,19 +88,20 @@ public class AddressBookManager {
 				break;
 			}
 		}
-		addressBook.setAllPersons(person);
-		allOpenAddressBooks.add(addressBook);
+		ab.setAllPersons(person);
+		//allOpenAddressBooks.add(addressBook);
 	}
 
 	public static void closeAddressBook() throws JsonGenerationException, JsonMappingException, IOException {
-		if (allOpenAddressBooks.size() == 1) {
+		
 			System.out.println("Do you want to save the file?(y/n)");
 			String choice = util.getStringcust();
 			if (choice.equals("y")) {
 				saveAddressBook();
 			}
-			allOpenAddressBooks.remove(0);
-		} else {
+	
+		} 
+	/*else {
 			System.out.println("Address Books open:");
 			for (AddressBook x : allOpenAddressBooks) {
 				System.out.println(x.getAddressBookName());
@@ -111,18 +115,22 @@ public class AddressBookManager {
 			}
 			allOpenAddressBooks.remove(name);
 		}
-	}
+		*/
+	
 
 	public static void saveAddressBook() throws JsonGenerationException, JsonMappingException, IOException {
 		ObjectMapper mapper = new ObjectMapper();
-		if (allOpenAddressBooks.size() == 1) {
+		System.out.println("enter name of the addressbook you want to save");
+		String name = util.getStringcust();
+//	AddressBook ab = new AddressBook(name);
 			String totalData = mapper.writerWithDefaultPrettyPrinter()
-					.writeValueAsString(allOpenAddressBooks.get(0).getAllPersons());
-			FileWriter file = new FileWriter(path + "/" + allOpenAddressBooks.get(0).getAddressBookName() + ".json");
+					.writeValueAsString(ab.getAllPersons());
+			FileWriter file = new FileWriter(path + "/" + ab.getAddressBookName() + ".json");
 			System.out.println(totalData);
 			file.write(totalData);
 			file.close();
-		} else {
+		}
+	/*else {
 			System.out.println("Enter the name of the file to be saved:");
 			String name = util.getStringcust();
 			for (AddressBook x : allOpenAddressBooks) {
@@ -134,36 +142,39 @@ public class AddressBookManager {
 					file.close();
 					break;
 				}
+		
 			}
-		}
-	}
+			*/
+		
+	
 
 	public static void saveAsAddressBook() throws JsonGenerationException, JsonMappingException, IOException {
 		ObjectMapper mapper = new ObjectMapper();
 		System.out.println("Save as name :");
 		String name = util.getStringcust();
-		if (allOpenAddressBooks.size() == 1) {
+		
+	//	AddressBook ab = new AddressBook(name);
 			String totalData = mapper.writerWithDefaultPrettyPrinter()
-					.writeValueAsString(allOpenAddressBooks.get(0).getAllPersons());
+					.writeValueAsString(ab.getAllPersons());
 			FileWriter file = new FileWriter(path + "/" + name + ".json");
 			System.out.println(totalData);
 			file.write(totalData);
 			file.close();
-		} else {
-			System.out.println("Enter the name of the file to be saved:");
-			String name1 = util.getStringcust();
-			for (AddressBook x : allOpenAddressBooks) {
-				if (x.getAddressBookName().equals(name1)) {
-					String totalData = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(x.getAllPersons());
-					FileWriter file = new FileWriter(path + "/" + name + ".json");
-					System.out.println(totalData);
-					file.write(totalData);
-					file.close();
-					break;
-				}
-			}
-		}
-	}
+		} 
+//			System.out.println("Enter the name of the file to be saved:");
+//			String name1 = util.getStringcust();
+//			for (AddressBook x : allOpenAddressBooks) {
+//				if (x.getAddressBookName().equals(name1)) {
+//					String totalData = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(x.getAllPersons());
+//					FileWriter file = new FileWriter(path + "/" + name + ".json");
+//					System.out.println(totalData);
+//					file.write(totalData);
+//					file.close();
+//					break;
+//				}
+//			}
+		
+	//}
 
 	public static void main(String[] args) throws IOException {
 
